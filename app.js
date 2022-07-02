@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+require("./utils/db");
+const Cungur = require("./models/Cungur.js");
+
 //setting ejs
 app.set("view engine", "ejs");
 
@@ -12,10 +15,16 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/:id", (req, res) => {
-  res.render("home", {
-    name: req.params.id,
-  });
+app.get("/home", (req, res) => {
+  // const user = await Cungur.findOne({ username:  })
+  console.log(req.body);
+  // res.render("home", {
+  //   name: req.params.id,
+  // });
+});
+
+app.post("/home", (req, res) => {
+  console.log(req);
 });
 
 app.listen(port, () => {
